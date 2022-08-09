@@ -29,9 +29,11 @@ export default function MovieItem() {
     return genres.map(genre => genre.name).join(', ');
   };
 
-  const score = Math.round((movie.vote_average / 10) * 100);
-  const imgSrc = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-  const year = String(movie.release_date).substring(0, 4);
+  const score = movie ? Math.round((movie.vote_average / 10) * 100) : '';
+  const imgSrc = movie
+    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+    : '';
+  const year = movie ? String(movie.release_date).substring(0, 4) : '';
 
   return (
     <main>
