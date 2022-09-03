@@ -8,9 +8,11 @@ export default function Reviews() {
   const { movieId } = useParams();
 
   useEffect(() => {
-    fechMovieReview(Number(movieId)).then(data => {
-      setReviews(data.results);
-    });
+    fechMovieReview(Number(movieId))
+      .then(data => {
+        setReviews(data.results);
+      })
+      .catch(console.log);
   }, [movieId]);
   return (
     <div>

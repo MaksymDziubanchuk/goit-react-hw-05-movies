@@ -6,7 +6,9 @@ export default function HomeView() {
   const [trendingMovies, setTrendingMovies] = useState([]);
 
   useEffect(() => {
-    fechTrendingMovies().then(data => setTrendingMovies(data));
+    fechTrendingMovies()
+      .then(data => setTrendingMovies(data))
+      .catch(console.log);
   }, []);
   return (
     <main>

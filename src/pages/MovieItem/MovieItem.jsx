@@ -16,10 +16,15 @@ export default function MovieItem() {
   const [movie, setMovie] = useState('');
 
   useEffect(() => {
-    fechMovieDetails(Number(movieId)).then(data => {
-      setMovie(data);
-    });
-  }, [movieId]);
+    fechMovieDetails(Number(movieId))
+      .then(data => {
+        setMovie(data);
+      })
+      .catch(error => {
+        console.log(error);
+        navigate(location.state?.from ?? '/');
+      });
+  }, [movieId, location, navigate]);
 
   const onGoBack = () => {
     navigate(location.state?.from ?? '/movies');

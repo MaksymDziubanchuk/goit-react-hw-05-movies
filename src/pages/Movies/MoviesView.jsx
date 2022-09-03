@@ -19,7 +19,7 @@ export default function MoviesView() {
 
   useEffect(() => {
     if (query !== '') {
-      fechQueryMovies(query).then(setMovies);
+      fechQueryMovies(query).then(setMovies).catch(console.log);
     }
     if (query === '') {
       setMovies([]);

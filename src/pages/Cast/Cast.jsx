@@ -2,14 +2,16 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fechMovieCredits } from 'helpers/helpers';
 
-export default function Cast()  {
+export default function Cast() {
   const [cast, setCast] = useState('');
   const { movieId } = useParams();
 
   useEffect(() => {
-    fechMovieCredits(Number(movieId)).then(data => {
-      setCast(data.cast.slice(0, 5));
-    });
+    fechMovieCredits(Number(movieId))
+      .then(data => {
+        setCast(data.cast.slice(0, 5));
+      })
+      .catch(console.log);
   }, [movieId]);
 
   return (
@@ -33,4 +35,4 @@ export default function Cast()  {
       )}
     </div>
   );
-};
+}
